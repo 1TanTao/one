@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{
+				width: 600px;
+				height: 400px;
+				border: 1px solid #000000;
+				margin: auto;
+			}
+			
+			#sd{
+				width: 150px;
+				height: 25px;		
+				border: 1px solid orangered;
+				position: relative;
+				top: 40px;
+				left: 225px;
+				
+			}
+			ul{
+				position: relative;
+				left: 185px;
+				top: 23px;
+				display:none;
+				
+			}
+			li{
+				height: 25px;
+				width: 150px;
+				list-style: none;
+				border-left: 1px solid orangered;
+			    border-right: 1px solid orangered; 
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div">
+			<div id="sd">0</div>
+			<ul id="ul">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+			</ul>
+		</div>
+		
+		<script>
+			var sdiv = document.getElementById('sd');
+			var ull = document.getElementById('ul');
+			var ddiv = document.getElementById('div');
+			var li = document.querySelectorAll('li');
+			var lsli = document.getElementById('ul').lastElementChild;
+			lsli.style.borderBottom="1px solid orangered";
+			
+			sdiv.onclick=function(ev){	
+				for(var i=0;i<li.length;i++){
+					if(sdiv.innerHTML==li[i].textContent){
+					     li[i].style.background = "orangered";
+				    }else{
+					      li[i].style.background = "white";
+				         }
+				}
+				ev.stopPropagation();
+				ull.style.display="block";	 
+			}
+			ddiv.onclick=function(){			
+				ull.style.display="none";
+				
+			}
+			for(var i=0;i<li.length;i++){
+			li[i].onclick=function(){
+				sdiv.innerHTML=this.innerHTML;
+				this.style.backgroundColor="orangered";
+				ul1.style.display = "none";
+			}
+		}
+		</script>
+	</body>
+</html>
